@@ -35,6 +35,6 @@ jobs:
             sleep 20
             docker exec blogapi-app php artisan migrate --force
             docker exec blogapi-app php artisan db:seed
-            docker exec blogapi-app php artisan passport:install --password --name="Default Password Grant Client" --provider="users" --no-interaction
             docker exec blogapi-app php artisan passport:keys --force --no-interaction
+            docker exec blogapi-app php artisan passport:client --password --name="Default Password Grant Client" --provider="users" --no-interaction
           EOF
