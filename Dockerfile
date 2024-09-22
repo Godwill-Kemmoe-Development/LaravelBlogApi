@@ -28,7 +28,6 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy application code into the container
 COPY . .
 
 # Install Composer globally
