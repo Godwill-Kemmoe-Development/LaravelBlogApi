@@ -32,6 +32,6 @@ jobs:
             docker image prune -a -f
             docker-compose build
             docker-compose up -d
-            sleep 5
+            sleep 20
             docker exec blogapi-app php artisan migrate --force
           EOF
