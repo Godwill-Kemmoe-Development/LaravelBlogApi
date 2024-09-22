@@ -31,7 +31,6 @@ jobs:
             docker-compose down -v
             docker image prune -a -f
             docker-compose build
-            docker-compose up -d --remove-orphans
-            docker exec blogapi-app composer install --optimize-autoloader --no-dev
+            docker-compose up -d
             docker exec blogapi-app php artisan migrate --force
           EOF
