@@ -18,7 +18,6 @@ services:
             - "80:80"
         networks:
             - laravel
-        entrypoint: /bin/sh -c "php artisan migrate --force && php artisan optimize && apache2-foreground"
 
     db:
         image: mysql:8.0
