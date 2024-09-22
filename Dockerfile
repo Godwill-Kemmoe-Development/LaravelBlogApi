@@ -36,8 +36,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install PHP dependencies using Composer (after copying composer.json and composer.lock)
 RUN composer install --prefer-dist --no-scripts --no-dev
 
-RUN composer require fakerphp/faker --dev --no-interaction
-
 # Set permissions for Laravel (storage, public, and bootstrap cache)
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
