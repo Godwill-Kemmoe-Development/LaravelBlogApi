@@ -40,8 +40,8 @@ RUN composer install --prefer-dist --no-scripts --no-dev
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
 
-RUN chown -R www-data:www-data /var/www/html/app/secrets \
-    && chmod -R 755 /var/www/html/app/secrets
+RUN chown -R www-data:www-data /var/www/html/app/secrets/oauth/*.key \
+    && chmod -R 600 /var/www/html/app/secrets/oauth/*.key
 
 # Update php.ini with custom configuration
 RUN echo "max_execution_time = 120" > /usr/local/etc/php/conf.d/custom.ini
