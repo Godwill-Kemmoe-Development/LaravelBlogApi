@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class BlogPostController extends Controller
 {
+    public function index()
+    {
+        // Fetch and return the list of blog posts
+        $posts = BlogPost::all();
+        return response()->json($posts);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
