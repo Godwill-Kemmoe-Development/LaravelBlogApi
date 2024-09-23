@@ -46,7 +46,7 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 RUN echo "max_execution_time = 120" > /usr/local/etc/php/conf.d/custom.ini
 
 # Expose port 80 to the outside world
-EXPOSE 80
+EXPOSE 8080
 
 # Use the script as the entrypoint
 ENTRYPOINT ["docker-entrypoint.sh"]

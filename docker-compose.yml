@@ -14,7 +14,7 @@ services:
             - .:/var/www/html
             - ./node_modules:/var/www/html/node_modules
         ports:
-            - "80:80"
+            - "8080:80"
         networks:
             - laravel
 
