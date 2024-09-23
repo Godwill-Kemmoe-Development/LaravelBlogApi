@@ -12,7 +12,6 @@ services:
             - APP_KEY=${APP_KEY}
         volumes:
             - .:/var/www/html
-            - ./vendor:/var/www/html/vendor
             - ./node_modules:/var/www/html/node_modules
         ports:
             - "80:80"

@@ -36,15 +36,20 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install PHP dependencies using Composer (after copying composer.json and composer.lock)
 RUN composer install --prefer-dist --no-scripts --no-dev
 
-# Set permissions for Laravel (storage, public, and bootstrap cache)
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
-
 # Update php.ini with custom configuration
 RUN echo "max_execution_time = 120" > /usr/local/etc/php/conf.d/custom.ini
 
 # Expose port 80 to the outside world
 EXPOSE 80
+
+# Copy the entrypoint script into the container
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+# Ensure the script is executable
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Use the script as the entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Start Apache in the foreground
 CMD ["apache2-foreground"]
