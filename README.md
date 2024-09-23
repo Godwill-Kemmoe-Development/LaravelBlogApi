@@ -93,8 +93,8 @@ A live demo has been made available for testing purposes.
 * Use https://blogapi.godwillkemmoe.com/oauth/token to generate ```access_token``` and ```refresh_token```:
   ```
   grant_type: password
-  client_id: 9d1441ee-fbfc-4f30-bea5-6f9e97fdb325
-  client_secret: 3TvXLaTFJZPdqOMnl4eT0Bs4jdZkwrbad1orGW5J
+  client_id: 9d14662a-f724-479e-916a-7b54c4a3c135
+  client_secret: UEJCmHY3IyNgtTMKtOMmKNMG6qgkFA9AI2z6iCKE
   username: qa@tester.com
   password: testerpassword
   ```
