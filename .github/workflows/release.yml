@@ -34,7 +34,7 @@ jobs:
             docker image prune -a -f
             docker-compose build
             docker-compose up -d
-            sleep 20
+            sleep 19
             docker exec blogapi-app php artisan optimize
             docker exec blogapi-app php artisan migrate --force
             docker exec blogapi-app php artisan db:seed
