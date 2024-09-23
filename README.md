@@ -73,7 +73,7 @@ docker-compose exec app php artisan passport:client --personal
     ```
 - After successful authentication, save the ```access_token``` and ```refresh_token``` for further requests.
 
-## Post Creation Payload (Using generate access_token as Bearer Token for authorizaion)
+## Post Creation Payload (Using generated access_token as Bearer Token for authorizaion)
 ```
 {
     "title": "QA Automation",
