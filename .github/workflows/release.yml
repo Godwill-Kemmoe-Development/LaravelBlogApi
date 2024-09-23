@@ -32,7 +32,7 @@ jobs:
             docker image prune -a -f
             docker-compose build
             docker-compose up -d
-            sleep 14
+            sleep 20
             docker exec blogapi-app php artisan migrate --force
             docker exec blogapi-app php artisan db:seed
             docker exec blogapi-app php artisan passport:keys --force --no-interaction
