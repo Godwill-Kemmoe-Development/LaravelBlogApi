@@ -98,6 +98,7 @@ A live demo has been made available for testing purposes.
   username: qa@tester.com
   password: testerpassword
   ```
+* Play with the endpoints
 
 ## Continuous Integration/Deployment
 *This project uses GitHub Actions for CI/CD. On each push or merge to the master branch, the application will automatically deploy to the production environment.*
