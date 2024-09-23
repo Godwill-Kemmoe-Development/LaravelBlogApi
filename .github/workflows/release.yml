@@ -26,8 +26,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.GK11_EC2_USER }}@${{ secrets.GK11_EC2_IP }} << 'EOF'
             cd /var/www/html
             sudo su
-            git checkout master
-            git pull origin master
+            git fetch origin
+            git reset --hard origin/master
             chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
             chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
             docker-compose down -v
