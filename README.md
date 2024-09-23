@@ -59,17 +59,7 @@ docker-compose exec app php artisan passport:client --personal
 - PUT ```/api/posts/{id}``` - Update a post.
 - DELETE ```/api/posts/{id}``` - Delete a post.
 
-## Post Creation Payload
-```
-{
-    "title": "QA Automation",
-    "content": "QA Automation Science",
-    "author": "QA Tester",
-    "status": "draft" // Optional, defaults to "draft"
-}
-```
-
-## Authentication
+## Authentication 
 - Use Postman to authenticate:
   - Create a new request and set the method to POST.
   - Enter the URL: http://localhost:8080/oauth/token.
@@ -82,6 +72,16 @@ docker-compose exec app php artisan passport:client --personal
     password: xxxxx
     ```
 - After successful authentication, save the ```access_token``` and ```refresh_token``` for further requests.
+
+## Post Creation Payload (Using generate access_token as Bearer Token for authorizaion)
+```
+{
+    "title": "QA Automation",
+    "content": "QA Automation Science",
+    "author": "QA Tester",
+    "status": "draft" // Optional, defaults to "draft"
+}
+```
 
 ## Unit Testing
 ```
