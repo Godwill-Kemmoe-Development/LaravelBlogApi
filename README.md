@@ -73,7 +73,7 @@ docker-compose exec app php artisan passport:client --personal
     ```
 - After successful authentication, save the ```access_token``` and ```refresh_token``` for further requests.
 
-## Post Creation Payload (Using generated access_token as Bearer Token for authorizaion)
+## Post Creation Payload (Using generated access_token as Bearer Token for authorization)
 ```
 {
     "title": "QA Automation",
@@ -90,11 +90,12 @@ docker-compose exec app php artisan test
 
 ## Live Demo
 A live demo has been made available for testing purposes.
+* Get client_id and client_secret from here: [Get Testing Client](https://github.com/Godwill-Kemmoe-Development/LaravelBlogApi/issues/1)
 * Use https://blogapi.godwillkemmoe.com/oauth/token to generate ```access_token``` and ```refresh_token```:
   ```
   grant_type: password
-  client_id: 9d14662a-f724-479e-916a-7b54c4a3c135
-  client_secret: UEJCmHY3IyNgtTMKtOMmKNMG6qgkFA9AI2z6iCKE
+  client_id: xxxx
+  client_secret: xxx
   username: qa@tester.com
   password: testerpassword
   ```
