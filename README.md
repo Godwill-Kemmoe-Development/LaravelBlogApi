@@ -1,67 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Blog API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Overview
+This project is a RESTful API built with Laravel 11.x for a simple blog application. It includes features for creating, reading, updating, and deleting blog posts, utilizing Laravel Passport for authentication.
 
-## About Laravel
+## Table of Contents
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [API Endpoints](#api-endpoints)
+- [Authentication](#authentication)
+- [Unit Testing](#Unit-Testing)
+- [Live Demo](#Live-Demo)
+- [Continuous Integration/Deployment](#continuous-integrationdeployment)
+- [License](#license)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Technologies Used
+- **PHP 8.3**
+- **Laravel 11.x**
+- **MySQL 8.0**
+- **Docker**
+- **GitHub Actions for CI/CD**
+- **Postman for API testing**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Setup Instructions
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Prerequisites
+- Docker and Docker Compose installed on your machine.
+- Access to a command line interface.
 
-## Learning Laravel
+### Cloning the Repository
+```
+git clone <repository-url>
+cd <repository-directory>
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Docker Setup
+- **Build and run the Docker containers:**
+```
+docker-compose up --build -d
+```
+- **Running Migrations:**
+```
+docker-compose exec app php artisan migrate
+```
+- **Generating Client Credentials:**
+```
+docker-compose exec app php artisan passport:client --personal
+```
+**Take note of the client_id and client_secret.**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### The API is accessible at:
+- API Base URL: http://localhost:8080/api/posts
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## API Endpoints
+- POST ```/oauth/token``` - Generate access tokens.
+- GET ```/api/posts``` - List all posts.
+- POST ```/api/posts``` - Create a new post.
+- GET ```/api/posts/{id}``` - Retrieve a specific post.
+- PUT ```/api/posts/{id}``` - Update a post.
+- DELETE ```/api/posts/{id}``` - Delete a post.
 
-## Laravel Sponsors
+## Authentication 
+- Use Postman to authenticate:
+  - Create a new request and set the method to POST.
+  - Enter the URL: http://localhost:8080/oauth/token.
+  - In the Body, select form-data and include the following:
+    ```
+    grant_type: password
+    client_id: xxxx
+    client_secret: xxxx
+    username: xx@xxx.xx
+    password: xxxxx
+    ```
+- After successful authentication, save the ```access_token``` and ```refresh_token``` for further requests.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Post Creation Payload (Using generated access_token as Bearer Token for authorizaion)
+```
+{
+    "title": "QA Automation",
+    "content": "QA Automation Science",
+    "author": "QA Tester",
+    "status": "draft" // Optional, defaults to "draft"
+}
+```
 
-### Premium Partners
+## Unit Testing
+```
+docker-compose exec app php artisan test
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Live Demo
+A live demo has been made available for testing purposes.
+* Use https://blogapi.godwillkemmoe.com/oauth/token to generate ```access_token``` and ```refresh_token```:
+  ```
+  grant_type: password
+  client_id: 9d14662a-f724-479e-916a-7b54c4a3c135
+  client_secret: UEJCmHY3IyNgtTMKtOMmKNMG6qgkFA9AI2z6iCKE
+  username: qa@tester.com
+  password: testerpassword
+  ```
+* Play with the endpoints
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Continuous Integration/Deployment
+*This project uses GitHub Actions for CI/CD. On each push or merge to the master branch, the application will automatically deploy to the production environment.*
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# LaravelBlogApi
+All rights reserved. Made with love by [Godwill Kemmoe](https://www.godwillkemmoe.com).
