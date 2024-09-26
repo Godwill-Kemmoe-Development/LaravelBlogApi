@@ -105,4 +105,4 @@ A live demo has been made available for testing purposes.
 *This project uses GitHub Actions for CI/CD. On each push or merge to the master branch, the application will automatically deploy to the production environment.*
 
 ## License
-All rights reserved. Made with love by [Godwill Kemmoe](https://www.godwillkemmoe.com).
+2024 All rights reserved. Made with love by [Godwill Kemmoe](https://www.godwillkemmoe.com).
